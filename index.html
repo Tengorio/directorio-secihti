@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECIHTI — Directorio & Organigrama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #9b2247;
+            --secondary: #1e5b4f;
+            --accent: #a57f2c;
+            --dark: #12100e;
+            --light: #f8f6f2;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Background effects */
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(155, 34, 71, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            z-index: -1;
+            filter: blur(80px);
+        }
+        .bg-glow-2 {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(30, 91, 79, 0.1) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.2s forwards;
+        }
+
+        .stat-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 2.5rem 1.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Action Cards */
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.4s forwards;
+        }
+
+        .action-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 24px;
+            text-decoration: none;
+            color: white;
+            text-align: left;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+        .action-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .action-card:hover {
+            border-color: var(--accent);
+            transform: scale(1.02);
+        }
+        .action-card:hover::before { opacity: 1; }
+
+        .action-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(165, 127, 44, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .action-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .action-card p {
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: gap 0.3s;
+        }
+        .action-card:hover .btn { gap: 1rem; }
+
+        footer {
+            margin-top: auto;
+            padding: 3rem;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
+            text-align: center;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="container">
+        <header>
+            <h1>SECIHTI Assets</h1>
+            <p class="subtitle">Visualización avanzada del Directorio Institucional y Estructura Orgánica. Datos limpios, accesibles y organizados para una gestión transparente.</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-value">1,734</span>
+                <span class="stat-label">Registros Limpios</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">7</span>
+                <span class="stat-label">Unidades Centrales</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">13</span>
+                <span class="stat-label">Direcciones Grales.</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">2026</span>
+                <span class="stat-label">Actualización</span>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="directorio.html" class="action-card">
+                <div class="action-icon">
+                    <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h2>Directorio Dinámico</h2>
+                <p>Buscador inteligente con filtros por área y nivel jerárquico. Acceso rápido a correos y extensiones oficiales.</p>
+                <div class="btn">Explorar Directorio <span>→</span></div>
+            </a>
+
+            <a href="organigrama.html" class="action-card">
+                <div class="action-icon">
+                    <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22v-5"/><path d="M9 7V2h6v5"/><path d="M3 13v-5h6"/><path d="M15 8h6v5"/><path d="M18 13v5H6v-5"/></svg>
+                </div>
+                <h2>Organigrama Interactivo</h2>
+                <p>Visualización en árbol indentado de la estructura institucional. Colapsable y con búsqueda por nodo.</p>
+                <div class="btn">Ver Estructura <span>→</span></div>
+            </a>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <a href="directorio_final.xlsx" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; border: 1px solid var(--border); padding: 0.6rem 1.2rem; border-radius: 100px; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent)'; this.style.color='white'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='rgba(255,255,255,0.4)'">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+                Descargar Base Excel (Fiel copia)
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        Esfuerzo de organización de datos públicos obtenidos de portales de transparencia. SECIHTI 2026.
+    </footer>
+</body>
+</html>

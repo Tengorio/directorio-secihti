@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organigrama Interactivo — SECIHTI</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --guinda:#9b2247;--verde:#1e5b4f;--dorado:#a57f2c;
+    --azul:#2a5c8a;--morado:#6b3a72;--naranja:#c75b00;
+    --verde2:#5a7a2c;--azul2:#2a7a8a;
+    --bg:#f8f6f2;--white:#ffffff;--text:#1a1714;--muted:#6b6259;--border:#d9d2c7;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow:hidden;}
+  
+  /* HEADER */
+  header{background:var(--guinda);padding:0;height:56px;position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;gap:1rem;padding:0 1.5rem;}
+  header h1{font-family:'EB Garamond',serif;font-size:1.15rem;color:#fff;font-weight:600;}
+  header p{color:rgba(255,255,255,.6);font-size:.75rem;}
+  .header-sep{width:3px;height:28px;background:var(--dorado);border-radius:2px;}
+
+  /* TOOLBAR */
+  .toolbar{position:fixed;top:56px;left:0;right:0;background:var(--verde);padding:.5rem 1.5rem;z-index:99;display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;}
+  .legend{display:flex;gap:.5rem;flex-wrap:wrap;}
+  .leg{display:flex;align-items:center;gap:.3rem;font-size:.72rem;color:rgba(255,255,255,.8);}
+  .leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+  .toolbar-hint{margin-left:auto;color:rgba(255,255,255,.5);font-size:.72rem;}
+
+  /* CANVAS */
+  #canvas{position:fixed;top:96px;left:0;right:0;bottom:0;overflow:hidden;}
+  svg{width:100%;height:100%;}
+  
+  /* NODES */
+  .node circle{stroke-width:2.5;cursor:pointer;transition:r .2s;}
+  .node:hover circle{filter:brightness(1.15);}
+  .node text{font-family:'DM Sans',sans-serif;pointer-events:none;}
+  .node .label-name{font-size:11px;font-weight:500;fill:var(--text);}
+  .node .label-person{font-size:10px;fill:var(--guinda);font-weight:600;}
+  .node .label-sub{font-size:9.5px;fill:var(--muted);}
+  
+  /* LINKS */
+  .link{fill:none;stroke:#c8c0b4;stroke-width:1.5px;}
+  
+  /* TOOLTIP */
+  .tooltip{
+    position:fixed;pointer-events:none;background:var(--white);
+    border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;
+    font-size:.8rem;box-shadow:0 4px 20px rgba(0,0,0,.15);
+    max-width:260px;z-index:200;display:none;
+  }
+  .tooltip h4{font-family:'EB Garamond',serif;font-size:.95rem;color:var(--guinda);margin-bottom:.3rem;}
+  .tooltip .t-cargo{color:var(--muted);font-size:.78rem;margin-bottom:.25rem;}
+  .tooltip .t-person{color:var(--verde);font-weight:600;font-size:.82rem;}
+  .tooltip .t-tipo{display:inline-block;font-size:.65rem;padding:.1rem .4rem;border-radius:3px;text-transform:uppercase;font-weight:700;margin-bottom:.3rem;}
+
+  /* CONTROLS */
+  .controls{position:fixed;bottom:1.5rem;right:1.5rem;display:flex;flex-direction:column;gap:.4rem;z-index:150;}
+  .ctrl-btn{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,.1);}
+  .ctrl-btn:hover{background:var(--bg);color:var(--guinda);}
+
+  /* SEARCH */
+  .search-wrap{position:fixed;top:110px;left:1.5rem;z-index:150;}
+  .search-wrap input{padding:.4rem .8rem;border:1px solid var(--border);border-radius:6px;font-size:.82rem;font-family:'DM Sans',sans-serif;background:var(--white);outline:none;width:220px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  .search-wrap input:focus{border-color:var(--guinda);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-sep"></div>
+  <div>
+    <h1>Organigrama Interactivo — SECIHTI</h1>
+    <p>Estructura Orgánica · Haz clic en los nodos para expandir/colapsar</p>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="legend">
+    <span class="leg"><span class="leg-dot" style="background:#9b2247"></span>Secretaría / Dir. General</span>
+    <span class="leg"><span class="leg-dot" style="background:#1e5b4f"></span>Sub. CyH / Dirección</span>
+    <span class="leg"><span class="leg-dot" style="background:#a57f2c"></span>Sub. Tec / Departamento</span>
+    <span class="leg"><span class="leg-dot" style="background:#2a5c8a"></span>Políticas Transversales</span>
+    <span class="leg"><span class="leg-dot" style="background:#6b3a72"></span>UAF / UAJ</span>
+    <span class="leg"><span class="leg-dot" style="background:#c75b00"></span>CIBIOGEM / Subdirección</span>
+  </div>
+  <span class="toolbar-hint">Rueda: zoom · Arrastrar: mover · Clic nodo: expandir</span>
+</div>
+
+<div class="search-wrap">
+  <input type="text" id="searchBox" placeholder="🔍 Buscar unidad o persona…">
+</div>
+
+<div id="canvas"></div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<div class="controls">
+  <button class="ctrl-btn" id="zoomIn" title="Acercar">+</button>
+  <button class="ctrl-btn" id="zoomOut" title="Alejar">−</button>
+  <button class="ctrl-btn" id="zoomReset" title="Centrar">⊙</button>
+  <button class="ctrl-btn" id="expandAll" title="Expandir todo">⊞</button>
+  <button class="ctrl-btn" id="collapseAll" title="Colapsar todo">⊟</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+// ─── DATA ─────────────────────────────────────────────────────────────────
+const COLORS = {
+  secretaria:'#9b2247', cienciahum:'#1e5b4f', tecnologia:'#a57f2c',
+  politicas:'#2a5c8a', uaf:'#6b3a72', cibiogem:'#c75b00',
+  dg: '#9b2247', dir:'#1e5b4f', subdir:'#c75b00', depto:'#a57f2c', enlace:'#b8d092'
+};
+function c(key){return COLORS[key]||COLORS.dir;}
+
+const data = {
+  "name": "Secretaría de Ciencia, Humanidades,\nTecnología e Innovación",
+  "tipo": "secretaria",
+  "person": "Rosaura Ruiz Gutiérrez",
+  "children": [
+    {
+      "id": "despacho",
+      "name": "Despacho de la Secretaria",
+      "color": "#9b2247",
+      "tipo": "secretaria",
+      "children": [],
+      "person": "Rosaura Ruiz Gutiérrez"
+    },
+    {
+      "id": "subcyh",
+      "name": "Subsecretaría de Ciencia y Humanidades",
+      "color": "#1e5b4f",
+      "tipo": "cienciahum",
+      "children": [],
+      "person": "Violeta Vázquez-Rojas Maldonado"
+    },
+    {
+      "id": "subdtvei",
+      "name": "Subsecretaría de Desarrollo Tecnológico, Vinculación e Innovación",
+      "color": "#a57f2c",
+      "tipo": "tecnologia",
+      "children": [],
+      "person": "Celina Peña Guzmán"
+    },
+    {
+      "id": "politicas",
+      "name": "Unidad de Políticas Transversales",
+      "color": "#2a5c8a",
+      "tipo": "politicas",
+      "children": [],
+      "person": "Mathieu Hautefeuille"
+    },
+    {
+      "id": "uaf",
+      "name": "Unidad de Administración y Finanzas (UAF)",
+      "color": "#6b3a72",
+      "tipo": "uaf",
+      "children": [],
+      "person": "Juan Manuel López Ramírez"
+    },
+    {
+      "id": "uaj",
+      "name": "Unidad de Asuntos Jurídicos (UAJ)",
+      "color": "#6b3a72",
+      "tipo": "secretaria",
+      "children": [],
+      "person": "Eduardo Guerrero Villegas"
+    },
+    {
+      "id": "cibiogem",
+      "name": "Secretaría Ejecutiva CIBIOGEM",
+      "color": "#c75b00",
+      "tipo": "cibiogem",
+      "children": [],
+      "person": "Titular Pendiente"
+    }
+  ]
+};
+
+
+const W = window.innerWidth;
+const H = window.innerHeight - 96;
+const margin = {top: 40, right: 20, bottom: 20, left: 40};
+const nodeHeight = 36;
+const indentWidth = 40;
+
+const svg = d3.select('#canvas').append('svg')
+  .attr('width', W).attr('height', H);
+
+const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+const zoom = d3.zoom()
+  .scaleExtent([0.2, 3])
+  .on('zoom', e => g.attr('transform', e.transform));
+
+svg.call(zoom);
+const initTransform = d3.zoomIdentity.translate(margin.left, margin.top).scale(0.85);
+svg.call(zoom.transform, initTransform);
+
+let i = 0;
+const nodeState = {};
+
+function initState(node, depth=0) {
+  if(depth < 2) nodeState[node.name] = true;
+  else nodeState[node.name] = false;
+  if(node.children) node.children.forEach(c => initState(c, depth+1));
+}
+initState(data);
+
+function toggleNode(name) { nodeState[name] = !nodeState[name]; }
+function setAllState(val) {
+  function recurse(node){ nodeState[node.name] = val; if(node.children) node.children.forEach(recurse); }
+  recurse(data);
+}
+
+function render() {
+  const root = d3.hierarchy(data);
+  function applyState(node) {
+    if(nodeState[node.data.name] === false && node.children) {
+      node._children = node.children; node.children = null;
+    } else if(nodeState[node.data.name] === true && node._children) {
+      node.children = node._children; node._children = null;
+    }
+    if(node.children) node.children.forEach(applyState);
+  }
+  applyState(root);
+
+  let index = -1;
+  root.eachBefore(n => { n.x = ++index * nodeHeight; n.y = n.depth * indentWidth; });
+
+  const nodes = root.descendants();
+  const linkPath = d => `M${d.source.y + 10},${d.source.x + 10} V${d.target.x} H${d.target.y}`;
+
+  const link = g.selectAll('.link').data(root.links(), d => d.target.data.name);
+  link.enter().append('path').attr('class','link').attr('d', linkPath).attr('fill', 'none').attr('stroke', '#c8c0b4').attr('stroke-width', '1.5px')
+    .style('opacity',0).transition().duration(300).style('opacity',1);
+  link.transition().duration(400).attr('d', linkPath);
+  link.exit().transition().duration(200).style('opacity',0).remove();
+
+  const nodeG = g.selectAll('.node').data(nodes, d => d.data.name);
+  const nodeEnter = nodeG.enter().append('g').attr('class','node')
+    .attr('transform', d => `translate(${d.y},${d.x})`)
+    .style('opacity',0)
+    .on('click', (e,d) => { if(d.children || d._children) { toggleNode(d.data.name); render(); } })
+    .on('mouseenter', showTooltip).on('mouseleave', hideTooltip).on('mousemove', moveTooltip);
+
+  nodeEnter.append('circle').attr('r', d => nodeRadius(d))
+    .attr('fill', d => d.data.color || c(d.data.tipo) || c('dir'))
+    .attr('stroke', d => d3.color(d.data.color||c(d.data.tipo)||c('dir')).darker(.4))
+    .style('cursor', d => (d.children || d._children) ? 'pointer' : 'default');
+
+  nodeEnter.each(function(d) {
+    const sel = d3.select(this);
+    const hasKids = !!(d.children || d._children);
+    sel.append('text').attr('class','label-name').attr('x', 14).attr('y', d.data.person ? -4 : 0).attr('dominant-baseline','middle')
+      .text(d.data.name.replace(/\\n/g, ' '));
+    if(d.data.person) {
+      sel.append('text').attr('class','label-person').attr('x', 14).attr('y', 8).attr('dominant-baseline','middle')
+        .text('► ' + d.data.person);
+    }
+    if(hasKids) {
+      sel.append('text').attr('class','label-sub').attr('x', -2).attr('y', 0).attr('dominant-baseline','middle')
+        .attr('text-anchor','end').attr('fill','#fff').attr('style','font-size:8px;pointer-events:none')
+        .text(d.children ? '−' : '+');
+    }
+  });
+
+  nodeEnter.transition().duration(300).style('opacity',1).attr('transform', d => `translate(${d.y},${d.x})`);
+  nodeG.transition().duration(400).attr('transform', d => `translate(${d.y},${d.x})`);
+  nodeG.select('.label-sub').text(d => d.children ? '−' : '+');
+  nodeG.exit().transition().duration(200).style('opacity',0).remove();
+}
+
+function nodeRadius(d) {
+  const t = d.data.tipo;
+  if(t==='secretaria' || t==='dg') return 9;
+  if(t==='cibiogem' || t==='uaf'||t==='politicas' || t==='cienciahum'||t==='tecnologia') return 8;
+  if(t==='dir') return 7;
+  if(t==='subdir') return 6;
+  return 5;
+}
+
+const tip = document.getElementById('tooltip');
+function showTooltip(e, d) {
+  const nd = d.data || d;
+  tip.innerHTML = `<span class="t-tipo" style="background:${nd.color||c(nd.tipo)||c('dir')};color:#fff">${nd.tipo||'dir'}</span><h4>${nd.name.replace(/\\n/g,' ')}</h4>${nd.person ? `<div class="t-person">👤 ${nd.person}</div>` : ''}${(nd.children||nd._children) ? `<div class="t-cargo" style="margin-top:.3rem">Clic para ${nd.children?'colapsar':'expandir'}</div>` : ''}`;
+  tip.style.display = 'block';
+  moveTooltip(e);
+}
+function hideTooltip() { tip.style.display='none'; }
+function moveTooltip(e) {
+  const x = e.clientX + 15, y = e.clientY + 10;
+  tip.style.left = (x + 270 > window.innerWidth ? x - 285 : x) + 'px';
+  tip.style.top = y + 'px';
+}
+
+document.getElementById('zoomIn').onclick = () => svg.transition().call(zoom.scaleBy, 1.5);
+document.getElementById('zoomOut').onclick = () => svg.transition().call(zoom.scaleBy, 0.67);
+document.getElementById('zoomReset').onclick = () => svg.transition().call(zoom.transform, initTransform);
+document.getElementById('expandAll').onclick = () => { setAllState(true); render(); };
+document.getElementById('collapseAll').onclick = () => { setAllState(false); nodeState[data.name] = true; render(); };
+
+document.getElementById('searchBox').addEventListener('input', function() {
+  const q = this.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  if(!q) { g.selectAll('.node').style('opacity',1); return; }
+  g.selectAll('.node').style('opacity', function(d) {
+    const name = (d.data.name||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const person = (d.data.person||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    return (name.includes(q)||person.includes(q)) ? 1 : 0.12;
+  });
+});
+
+render();
+window.addEventListener('resize', () => { svg.attr('width', window.innerWidth).attr('height', window.innerHeight - 96); });
+
+</script>
+</body>
+</html>
