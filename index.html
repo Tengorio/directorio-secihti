@@ -1,274 +1,492 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SECIHTI — Directorio & Organigrama</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>SECIHTI — Directorio & Organigrama Institucional 2026</title>
+    <meta name="description"
+        content="Visualización del Directorio Institucional y Estructura Orgánica de SECIHTI 2026. Datos limpios extraídos del SIPOT, de acceso público.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary: #9b2247;
-            --secondary: #1e5b4f;
-            --accent: #a57f2c;
-            --dark: #12100e;
-            --light: #f8f6f2;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
+            --guinda: #9b2247;
+            --verde: #1e5b4f;
+            --dorado: #a57f2c;
+            --bg: #f8f6f2;
+            --bg2: #f0ece4;
+            --text: #1a1714;
+            --muted: #6b6259;
+            --border: #d9d2c7;
+            --white: #ffffff;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--dark);
-            color: var(--light);
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
-            overflow-x: hidden;
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
 
-        /* Background effects */
-        .bg-glow {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(155, 34, 71, 0.15) 0%, transparent 70%);
-            top: -200px;
-            right: -200px;
-            z-index: -1;
-            filter: blur(80px);
-        }
-        .bg-glow-2 {
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(30, 91, 79, 0.1) 0%, transparent 70%);
-            bottom: -150px;
-            left: -150px;
-            z-index: -1;
-            filter: blur(80px);
-        }
-
-        .container {
-            max-width: 1200px;
-            width: 100%;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
+        /* ── HEADER ── */
         header {
-            margin-bottom: 5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s forwards;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            letter-spacing: -0.02em;
-            background: linear-gradient(to right, #fff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.6);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 5rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.2s forwards;
-        }
-
-        .stat-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            padding: 2.5rem 1.5rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .stat-value {
-            display: block;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-        .stat-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Action Cards */
-        .actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.4s forwards;
-        }
-
-        .action-card {
+            background: var(--guinda);
             position: relative;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-            border: 1px solid var(--border);
-            padding: 3rem;
-            border-radius: 24px;
-            text-decoration: none;
-            color: white;
-            text-align: left;
             overflow: hidden;
-            transition: all 0.4s;
         }
-        .action-card::before {
+
+        header::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05));
-            opacity: 0;
-            transition: opacity 0.4s;
+            background: repeating-linear-gradient(-45deg, transparent, transparent 28px,
+                    rgba(255, 255, 255, .03) 28px, rgba(255, 255, 255, .03) 30px);
         }
+
+        .header-inner {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.4rem 2rem 2rem;
+            display: flex;
+            align-items: flex-end;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .header-bar {
+            width: 4px;
+            height: 80px;
+            background: var(--dorado);
+            flex-shrink: 0;
+            align-self: center;
+        }
+
+        .header-text h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .header-text p {
+            color: rgba(255, 255, 255, .62);
+            font-size: .85rem;
+            margin-top: .4rem;
+            letter-spacing: .04em;
+        }
+
+        .header-badges {
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+            align-items: flex-end;
+        }
+
+        .badge {
+            padding: .22rem .7rem;
+            border-radius: 4px;
+            font-size: .72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .badge-green {
+            background: rgba(30, 91, 79, .3);
+            color: #7dffc8;
+        }
+
+        .badge-gold {
+            background: rgba(165, 127, 44, .3);
+            color: #ffd97d;
+        }
+
+        /* ── STATS TOOLBAR ── */
+        .stats-bar {
+            background: var(--verde);
+            padding: .7rem 2rem;
+        }
+
+        .stats-bar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: baseline;
+            gap: .4rem;
+        }
+
+        .stat-item .val {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffd97d;
+        }
+
+        .stat-item .lbl {
+            font-size: .75rem;
+            color: rgba(255, 255, 255, .65);
+            text-transform: uppercase;
+            letter-spacing: .06em;
+        }
+
+        /* ── MAIN ── */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+            flex: 1;
+        }
+
+        .section-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--guinda);
+            margin-bottom: 1.2rem;
+            padding-bottom: .4rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        /* ── ACTION CARDS ── */
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .action-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all .25s ease;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
+        }
+
         .action-card:hover {
-            border-color: var(--accent);
-            transform: scale(1.02);
+            border-color: var(--guinda);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(155, 34, 71, .1);
         }
-        .action-card:hover::before { opacity: 1; }
 
         .action-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(165, 127, 44, 0.1);
-            border-radius: 16px;
+            width: 48px;
+            height: 48px;
+            background: rgba(155, 34, 71, .08);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 2rem;
-            color: var(--accent);
+            color: var(--guinda);
+            flex-shrink: 0;
         }
 
         .action-card h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        .action-card p {
-            color: rgba(255,255,255,0.6);
-            line-height: 1.6;
-            margin-bottom: 2rem;
+            font-family: 'EB Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--guinda);
         }
 
-        .btn {
+        .action-card p {
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: .9rem;
+            flex: 1;
+        }
+
+        .btn-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
+            gap: .4rem;
+            color: var(--verde);
             font-weight: 600;
-            font-size: 1rem;
-            transition: gap 0.3s;
+            font-size: .88rem;
+            transition: gap .2s;
         }
-        .action-card:hover .btn { gap: 1rem; }
 
+        .action-card:hover .btn-link {
+            gap: .7rem;
+        }
+
+        /* ── BMC SECTION ── */
+        .bmc-section {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.6rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
+            margin-bottom: 2.5rem;
+        }
+
+        .bmc-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .bmc-text h3 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.15rem;
+            color: var(--guinda);
+            margin-bottom: .3rem;
+        }
+
+        .bmc-text p {
+            color: var(--muted);
+            font-size: .85rem;
+            line-height: 1.5;
+        }
+
+        .bmc-btn {
+            margin-left: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: var(--dorado);
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: .88rem;
+            padding: .6rem 1.3rem;
+            border-radius: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background .2s, transform .2s;
+            white-space: nowrap;
+        }
+
+        .bmc-btn:hover {
+            background: #8a6a24;
+            transform: translateY(-2px);
+        }
+
+        /* ── FOOTER CARDS ── */
+        .footer-grid {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-card {
+            flex: 1;
+            min-width: 200px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: .9rem 1.1rem;
+            font-size: .82rem;
+        }
+
+        .footer-card h4 {
+            font-family: 'EB Garamond', serif;
+            font-size: .95rem;
+            margin-bottom: .4rem;
+            color: var(--guinda);
+        }
+
+        .footer-card p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .footer-card a {
+            color: var(--verde);
+            text-decoration: none;
+        }
+
+        .footer-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── SITE FOOTER ── */
         footer {
-            margin-top: auto;
-            padding: 3rem;
-            color: rgba(255,255,255,0.3);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border);
-            width: 100%;
+            background: var(--guinda);
+            color: rgba(255, 255, 255, .5);
+            font-size: .8rem;
+            padding: 1.2rem 2rem;
             text-align: center;
         }
 
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* ── RESPONSIVE ── */
+        @media (max-width: 650px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .container { padding: 2rem 1rem; }
+            .header-badges {
+                margin-left: 0;
+                align-items: flex-start;
+            }
+
+            .header-text h1 {
+                font-size: 1.7rem;
+            }
+
+            .bmc-btn {
+                margin-left: 0;
+            }
+
+            .actions {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="bg-glow"></div>
-    <div class="bg-glow-2"></div>
 
-    <div class="container">
-        <header>
-            <h1>SECIHTI Assets</h1>
-            <p class="subtitle">Visualización avanzada del Directorio Institucional y Estructura Orgánica. Datos limpios, accesibles y organizados para una gestión transparente.</p>
-        </header>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <span class="stat-value">1,734</span>
-                <span class="stat-label">Registros Limpios</span>
+    <header>
+        <div class="header-inner">
+            <div class="header-bar"></div>
+            <div class="header-text">
+                <h1>Directorio Institucional SECIHTI</h1>
+                <p>Datos públicos · SIPOT · Art. 70 LGTAIP · Visualizaciones construidas sobre fuentes oficiales</p>
             </div>
-            <div class="stat-card">
-                <span class="stat-value">7</span>
-                <span class="stat-label">Unidades Centrales</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-value">13</span>
-                <span class="stat-label">Direcciones Grales.</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-value">2026</span>
-                <span class="stat-label">Actualización</span>
+            <div class="header-badges">
+                <span class="badge badge-green">1,725 servidoras/es públicos</span>
+                <span class="badge badge-gold">Actualizado Abril 2026</span>
             </div>
         </div>
+    </header>
 
-        <div class="actions">
-            <a href="directorio.html" class="action-card">
-                <div class="action-icon">
-                    <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                </div>
-                <h2>Directorio Dinámico</h2>
-                <p>Buscador inteligente con filtros por área y nivel jerárquico. Acceso rápido a correos y extensiones oficiales.</p>
-                <div class="btn">Explorar Directorio <span>→</span></div>
-            </a>
-
-            <a href="organigrama.html" class="action-card">
-                <div class="action-icon">
-                    <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22v-5"/><path d="M9 7V2h6v5"/><path d="M3 13v-5h6"/><path d="M15 8h6v5"/><path d="M18 13v5H6v-5"/></svg>
-                </div>
-                <h2>Organigrama Interactivo</h2>
-                <p>Visualización en árbol indentado de la estructura institucional. Colapsable y con búsqueda por nodo.</p>
-                <div class="btn">Ver Estructura <span>→</span></div>
-            </a>
-        </div>
-
-        <div style="margin-top: 2rem;">
-            <a href="directorio_final.xlsx" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; border: 1px solid var(--border); padding: 0.6rem 1.2rem; border-radius: 100px; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent)'; this.style.color='white'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='rgba(255,255,255,0.4)'">
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
-                Descargar Base Excel (Fiel copia)
-            </a>
+    <div class="stats-bar">
+        <div class="stats-bar-inner">
+            <div class="stat-item">
+                <span class="val">229</span>
+                <span class="lbl">Puestos Administrativos</span>
+            </div>
+            <div class="stat-item">
+                <span class="val">7</span>
+                <span class="lbl">Unidades Centrales</span>
+            </div>
+            <div class="stat-item">
+                <span class="val">13</span>
+                <span class="lbl">Direcciones Grales.</span>
+            </div>
+            <div class="stat-item">
+                <span class="val">5</span>
+                <span class="lbl">Fuentes oficiales</span>
+            </div>
         </div>
     </div>
 
+    <main>
+        <p class="section-title">Herramientas de visualización</p>
+
+        <div class="actions">
+            <a href="directorio.html" class="action-card" id="link-directorio">
+                <div class="action-icon">
+                    <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <div>
+                    <h2>Directorio Dinámico</h2>
+                    <p>Buscador con filtros por área y nivel jerárquico. Acceso rápido a correos y extensiones oficiales
+                        de las 1,725 personas registradas.</p>
+                </div>
+                <div class="btn-link">Explorar Directorio <span>→</span></div>
+            </a>
+
+            <a href="organigrama.html" class="action-card" id="link-organigrama">
+                <div class="action-icon">
+                    <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M12 22v-5" />
+                        <path d="M9 7V2h6v5" />
+                        <path d="M3 13v-5h6" />
+                        <path d="M15 8h6v5" />
+                        <path d="M18 13v5H6v-5" />
+                    </svg>
+                </div>
+                <div>
+                    <h2>Organigrama Interactivo</h2>
+                    <p>Árbol de la estructura orgánica, desde la Secretaría hasta Jefes de Departamento. Colapsable, con
+                        zoom y búsqueda por nodo.</p>
+                </div>
+                <div class="btn-link">Ver Estructura <span>→</span></div>
+            </a>
+        </div>
+
+        <!-- BMC / Dataset section -->
+        <div class="bmc-section" id="dataset-section">
+            <div class="bmc-icon">☕</div>
+            <div class="bmc-text">
+                <h3>¿Quieres el dataset limpio?</h3>
+                <p>Excel consolidado — SIPOT unificado, fuentes complementarias, sin duplicados, con bloque
+                    administrativo asignado. Incluye script de limpieza en Python.</p>
+            </div>
+            <a href="https://buymeacoffee.com" target="_blank" rel="noopener" class="bmc-btn" id="bmc-button">
+                ☕ Buy me a coffee para obtenerlo
+            </a>
+        </div>
+
+        <!-- Provenance cards -->
+        <p class="section-title">Trazabilidad de datos</p>
+        <div class="footer-grid">
+            <div class="footer-card">
+                <h4>📋 SIPOT / LGTAIP</h4>
+                <p>Fuente principal. <a href="https://www.plataformadetransparencia.org.mx"
+                        target="_blank">plataformadetransparencia.org.mx</a> · Art. 70 fracc. IV · Período Oct–Dic 2025
+                </p>
+            </div>
+            <div class="footer-card">
+                <h4>🌐 Portal Secihti</h4>
+                <p>Directorios de Unidad de Transparencia, Becas Nacionales y Miércoles SNII publicados en <a
+                        href="https://secihti.mx" target="_blank">secihti.mx</a></p>
+            </div>
+            <div class="footer-card">
+                <h4>🧬 CIBIOGEM</h4>
+                <p>Directorio de la Secretaría Ejecutiva y titulares intersecretariales en <a
+                        href="https://cibiogem.secihti.mx" target="_blank">cibiogem.secihti.mx</a></p>
+            </div>
+            <div class="footer-card">
+                <h4>📢 Comunicados Oficiales</h4>
+                <p>Nombramientos de alta dirección verificados contra comunicados de prensa vigentes (feb–mar 2026)</p>
+            </div>
+        </div>
+    </main>
+
     <footer>
-        Esfuerzo de organización de datos públicos obtenidos de portales de transparencia. SECIHTI 2026.
+        Esfuerzo de organización de datos públicos obtenidos de portales de transparencia. SECIHTI 2026. Datos públicos,
+        trabajo propio.
     </footer>
+
 </body>
+
 </html>

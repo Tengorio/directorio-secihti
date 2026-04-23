@@ -78,12 +78,13 @@
 
 <div class="toolbar">
   <div class="legend">
-    <span class="leg"><span class="leg-dot" style="background:#9b2247"></span>Secretaría / Dir. General</span>
-    <span class="leg"><span class="leg-dot" style="background:#1e5b4f"></span>Sub. CyH / Dirección</span>
-    <span class="leg"><span class="leg-dot" style="background:#a57f2c"></span>Sub. Tec / Departamento</span>
-    <span class="leg"><span class="leg-dot" style="background:#2a5c8a"></span>Políticas Transversales</span>
-    <span class="leg"><span class="leg-dot" style="background:#6b3a72"></span>UAF / UAJ</span>
-    <span class="leg"><span class="leg-dot" style="background:#c75b00"></span>CIBIOGEM / Subdirección</span>
+    <span class="leg"><span class="leg-dot" style="background:#9b2247;border-radius:3px"></span>Secretaría</span>
+    <span class="leg"><span class="leg-dot" style="background:#444466;border-radius:3px"></span>Subsecs. / Titulares</span>
+    <span class="leg"><span class="leg-dot" style="background:#134033;border-radius:3px"></span>Dir. General</span>
+    <span class="leg"><span class="leg-dot" style="background:#1e5b4f"></span>Dirección de Área</span>
+    <span class="leg"><span class="leg-dot" style="background:#c75b00"></span>Subdirección</span>
+    <span class="leg"><span class="leg-dot" style="background:#a57f2c"></span>Jefatura de Depto.</span>
+    <span class="leg"><span class="leg-dot" style="background:#2a7a8a"></span>Invest. por México</span>
   </div>
   <span class="toolbar-hint">Rueda: zoom · Arrastrar: mover · Clic nodo: expandir</span>
 </div>
@@ -109,76 +110,1887 @@
 // ─── DATA ─────────────────────────────────────────────────────────────────
 const COLORS = {
   secretaria:'#9b2247', cienciahum:'#1e5b4f', tecnologia:'#a57f2c',
-  politicas:'#2a5c8a', uaf:'#6b3a72', cibiogem:'#c75b00',
-  dg: '#9b2247', dir:'#1e5b4f', subdir:'#c75b00', depto:'#a57f2c', enlace:'#b8d092'
+  politicas:'#2a5c8a', uaf:'#6b3a72', uaj:'#6b3a72', cibiogem:'#c75b00',
+  subgrupo:'#444466', ixm:'#2a7a8a',
+  dg: '#7a1b38', dir:'#1e5b4f', subdir:'#c75b00', depto:'#a57f2c', enlace:'#b8d092'
 };
 function c(key){return COLORS[key]||COLORS.dir;}
 
 const data = {
-  "name": "Secretaría de Ciencia, Humanidades,\nTecnología e Innovación",
+  "name": "Secretaría de Ciencia,\nHumanidades, Tecnología e Innovación",
   "tipo": "secretaria",
   "person": "Rosaura Ruiz Gutiérrez",
+  "color": "#9b2247",
   "children": [
     {
       "id": "despacho",
       "name": "Despacho de la Secretaria",
+      "tipo": "secretaria",
+      "person": "Rosaura Ruiz Gutiérrez",
       "color": "#9b2247",
-      "tipo": "secretaria",
-      "children": [],
-      "person": "Rosaura Ruiz Gutiérrez"
+      "children": [
+        {
+          "name": "Servicios Generales, Obras Y Control De Bienes",
+          "tipo": "dir",
+          "person": "Manuel Alejandro Torres Silva",
+          "color": "#1e5b4f",
+          "children": []
+        },
+        {
+          "name": "Subdirecciones (28)",
+          "tipo": "subdir",
+          "person": "",
+          "color": "#c75b00",
+          "_group": true,
+          "children": [
+            {
+              "name": "Ingreso, Análisis Y Diseño Organizacional",
+              "tipo": "subdir",
+              "person": "Blanca Estévez Lara",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Seguimento De Apoyos",
+              "tipo": "subdir",
+              "person": "Francisco Garcia Gonzalez",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Articulación Para La Seguridad Nacional",
+              "tipo": "subdir",
+              "person": "Ana Alicia Ramirez Castillo",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Articulación Para La Gestión Integral De Riesgos",
+              "tipo": "subdir",
+              "person": "Esteban Ávila Flores",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Fortalecimiento A La Infraestructura Científica, Humaní…",
+              "tipo": "subdir",
+              "person": "Rosa Amalia Mijares Delahanty",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Estabilidad Operativa",
+              "tipo": "subdir",
+              "person": "Marcelo Garcia Olivares",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Proyección Normativa",
+              "tipo": "subdir",
+              "person": "Mayra Elena Domínguez Pérez",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Articulación Científica, Humanística Y Tecnológica",
+              "tipo": "subdir",
+              "person": "Margarita Calderon Ochoa",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "De Articulación Para La Transición Y Eficiencia Energét…",
+              "tipo": "subdir",
+              "person": "Nohemí Juárez Flores",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Gestión De Servicios Personales De Cpi Y Profesionaliza…",
+              "tipo": "subdir",
+              "person": "Brenda Antonieta Cabrera Ortega",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Seguimiento Financiero De Proyectos",
+              "tipo": "subdir",
+              "person": "Valeria Monserrat Trejo Jaime",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Articulación En Cambio Climático Y Medio Ambiente",
+              "tipo": "subdir",
+              "person": "Yutsil Guadalupe Sangines Sayavedra",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Análisis Y Seguimiento Programático Presupuestal",
+              "tipo": "subdir",
+              "person": "Alejandro Francisco Álvarez Oropeza",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Asuntos Internacionales",
+              "tipo": "subdir",
+              "person": "Karen Aspuru Juárez",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Seguimiento Presupuestal De Proyectos",
+              "tipo": "subdir",
+              "person": "Edgar Mauricio Mora Gudiño",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Procesos Jurídicos Contenciosos",
+              "tipo": "subdir",
+              "person": "Francisco Pérez Leyva",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Remuneraciones Y Control Presupuestal De Servicios Pers…",
+              "tipo": "subdir",
+              "person": "Adriana Rodriguez Martinez",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Contenidos Y Diseño Web",
+              "tipo": "subdir",
+              "person": "Néstor Enrique Nava Alanís",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Información",
+              "tipo": "subdir",
+              "person": "Juan Jesús Estrella Chávez",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Vinculación Con Medios",
+              "tipo": "subdir",
+              "person": "Sandra Arcos Reyes",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Procesos Jurídicos Laborales",
+              "tipo": "subdir",
+              "person": "Agueda Ortiz Barbosa",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Atención A Medios Alternativos De Solución De Controver…",
+              "tipo": "subdir",
+              "person": "Heriberto Rodea Hernández",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Litigios Civiles Y Penales",
+              "tipo": "subdir",
+              "person": "Carlos Vázquez Cancino",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Servicios Generales Y Mantenimiento",
+              "tipo": "subdir",
+              "person": "Nancy Cruz Garcia",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Evaluación",
+              "tipo": "subdir",
+              "person": "Carmen Mireya Calderón González",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Ingreso, Análisis Y Diseño Organizacional",
+              "tipo": "subdir",
+              "person": "Karen Cecilia Pérez Chora",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Integración De La Información",
+              "tipo": "subdir",
+              "person": "José Luis Villalpando Ortega",
+              "color": "#c75b00",
+              "children": []
+            },
+            {
+              "name": "Control Y Análisis De Datos",
+              "tipo": "subdir",
+              "person": "Roberto Arturo Colin Ruiz",
+              "color": "#c75b00",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Jefaturas de Departamento (48)",
+          "tipo": "depto",
+          "person": "",
+          "color": "#a57f2c",
+          "_group": true,
+          "children": [
+            {
+              "name": "Seguimiento Y Control",
+              "tipo": "depto",
+              "person": "Fernando Cortés Cardona",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Gestión Y Enlace",
+              "tipo": "depto",
+              "person": "Diana Laura García Martinez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Procesos Normativos",
+              "tipo": "depto",
+              "person": "Joel Enrique Hernandez Ramirez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Ingreso Al Servicio Profesional De Carrera Y Contrataci…",
+              "tipo": "depto",
+              "person": "Avril Gama Mendez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Seguimiento A La Gestión Integral De Riesgos",
+              "tipo": "depto",
+              "person": "Juan Carlos Cortes Dehesa",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Administración Y Procesamiento De Pagos",
+              "tipo": "depto",
+              "person": "Luis Manuel Gutiérrez Pérez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Seguimiento A Proyectos De Seguridad Nacional",
+              "tipo": "depto",
+              "person": "Adriana De Jesus Verde Flota",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Análisis De Estructuras Y Evaluación Organizacional",
+              "tipo": "depto",
+              "person": "Clemente Martin Becerril Cortes",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Jefe De Tecnicos",
+              "tipo": "depto",
+              "person": "Mario Moreno Ramirez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Compilación Y Análisis Normativo",
+              "tipo": "depto",
+              "person": "Federico Franco Puga",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Jefe De Tecnicos",
+              "tipo": "depto",
+              "person": "Margarita Espinosa Loreto",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Acceso A La Información Y Protección De Datos Personale…",
+              "tipo": "depto",
+              "person": "Enrique Sanchez Muñoz",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Seguimiento En Cambio Climático Y Medio Ambiente",
+              "tipo": "depto",
+              "person": "Miguel Reyes Alberto",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Jefe De Tecnicos",
+              "tipo": "depto",
+              "person": "Herlinda Ocelotl Paredes",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Jefe De Tecnicos",
+              "tipo": "depto",
+              "person": "Maria Luisa Ocelolt Paredes",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Análisis De Información Financiera De Proyectos",
+              "tipo": "depto",
+              "person": "Jose Alberto Sanchez Dominguez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Relaciones Bilaterales",
+              "tipo": "depto",
+              "person": "Dwight Donaldo Loera Aguiar",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Capacitación Y Desarrollo Profesional",
+              "tipo": "depto",
+              "person": "María José Rodríguez Sánchez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Servicios Personales De Cpi",
+              "tipo": "depto",
+              "person": "Rubén Freyre Velázquez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Análisis Programático Presupuestal",
+              "tipo": "depto",
+              "person": "Jose Luis Mendoza Torres",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Jefe De Tecnicos",
+              "tipo": "depto",
+              "person": "Lucia Carmela Hernandez Castillo",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Estadísticas E Informes",
+              "tipo": "depto",
+              "person": "María De Lourdes Ocampo Delgado",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Control Presupuestal",
+              "tipo": "depto",
+              "person": "Miguel Angel Patricio Moreno",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Control De Gestión De La Secihti",
+              "tipo": "depto",
+              "person": "Alberto Valdovinos Aguilera",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Apoyo Administrativo",
+              "tipo": "depto",
+              "person": "Claudia Garcia Perea",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Seguimiento A Procesos No Contenciosos",
+              "tipo": "depto",
+              "person": "Helio Eloys Ruiz Loaiza",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Litigios Civiles Y Penales",
+              "tipo": "depto",
+              "person": "Rosa Edith Ventura Rios",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Control Administrativo Y Financiero",
+              "tipo": "depto",
+              "person": "Yenifer Castro Castillo",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Jefe (A) De Tecnico (A)S",
+              "tipo": "depto",
+              "person": "Paul Delarrue Osnaya",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Remuneraciones E Impuestos",
+              "tipo": "depto",
+              "person": "Ericka Fabiola Gallegos García",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Seguimiento En Procesos Administrativos",
+              "tipo": "depto",
+              "person": "Alejandro Steinman Salinas",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Revisión De Convenios Y Contratos",
+              "tipo": "depto",
+              "person": "Joaquín Alejandro Ruiz Cárdenas",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Jefe (A) De Tecnico (A)S",
+              "tipo": "depto",
+              "person": "Laura Petra Reyes Medina",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Servicios Generales",
+              "tipo": "depto",
+              "person": "Israel Ferreira Guzman",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Análisis Y Seguimiento",
+              "tipo": "depto",
+              "person": "José Carlos Maldonado Ayala",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Jefe (A) De Tecnico (A)S",
+              "tipo": "depto",
+              "person": "Jose Jesus Borbon Moncayo",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Coordinación E Incidencia De La Ciencia Y Las Humanidad…",
+              "tipo": "depto",
+              "person": "Leticia Flores Alanis",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Contratos De Arrendamientos Y Servicios",
+              "tipo": "depto",
+              "person": "Marco Antonio Casabal De La Rosa",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Asistencia Y Relaciones Laborales",
+              "tipo": "depto",
+              "person": "Jorge Eduardo Ochoa Medina",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Jefe (A) De Tecnico (A)S",
+              "tipo": "depto",
+              "person": "Meyali Bandin De Agustin",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Protección Del Conocimiento",
+              "tipo": "depto",
+              "person": "Carlos Ernesto Palma Servin",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Información Y Evaluación",
+              "tipo": "depto",
+              "person": "Karla Galán Romero",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Análisis Y Control Presupuestal De Servicios Personales",
+              "tipo": "depto",
+              "person": "Gabriela Navarro Resendiz",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Seguimento A Tecnologías De Inteligencia Artificial",
+              "tipo": "depto",
+              "person": "Karla Adriana Reyes Gonzalez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Jefe (A) De Tecnico (A)S",
+              "tipo": "depto",
+              "person": "Nidia Ivonne Urbina Tapia",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Jefe (A) De Tecnico (A)S",
+              "tipo": "depto",
+              "person": "Martha Isela Sanchez Rodriguez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Registro De Programas Academicos",
+              "tipo": "depto",
+              "person": "Jazmin Marisol Moreno Martinez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Procesamiento De Datos",
+              "tipo": "depto",
+              "person": "Karen Viviana Rendón Osorio",
+              "color": "#a57f2c",
+              "children": []
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": "subcyh",
-      "name": "Subsecretaría de Ciencia y Humanidades",
-      "color": "#1e5b4f",
-      "tipo": "cienciahum",
-      "children": [],
-      "person": "Violeta Vázquez-Rojas Maldonado"
-    },
-    {
-      "id": "subdtvei",
-      "name": "Subsecretaría de Desarrollo Tecnológico, Vinculación e Innovación",
-      "color": "#a57f2c",
-      "tipo": "tecnologia",
-      "children": [],
-      "person": "Celina Peña Guzmán"
-    },
-    {
-      "id": "politicas",
-      "name": "Unidad de Políticas Transversales",
-      "color": "#2a5c8a",
-      "tipo": "politicas",
-      "children": [],
-      "person": "Mathieu Hautefeuille"
-    },
-    {
-      "id": "uaf",
-      "name": "Unidad de Administración y Finanzas (UAF)",
-      "color": "#6b3a72",
-      "tipo": "uaf",
-      "children": [],
-      "person": "Juan Manuel López Ramírez"
-    },
-    {
-      "id": "uaj",
-      "name": "Unidad de Asuntos Jurídicos (UAJ)",
-      "color": "#6b3a72",
-      "tipo": "secretaria",
-      "children": [],
-      "person": "Eduardo Guerrero Villegas"
+      "name": "Subsecretarías y Titulares de Unidad",
+      "tipo": "subgrupo",
+      "person": "",
+      "color": "#444",
+      "_group": true,
+      "children": [
+        {
+          "id": "subcyh",
+          "name": "Subsecretaría de Ciencia\ny Humanidades",
+          "tipo": "cienciahum",
+          "person": "Violeta Vázquez-Rojas Maldonado",
+          "color": "#1e5b4f",
+          "children": [
+            {
+              "name": "Investigación Científica Y Humanística",
+              "tipo": "dg",
+              "person": "Andres Eduardo Triana Moreno",
+              "color": "#134033",
+              "children": []
+            },
+            {
+              "name": "Becas Y Apoyos A La Comunidad Científica Y Humanística",
+              "tipo": "dg",
+              "person": "Liza Elena Aceves López",
+              "color": "#134033",
+              "children": []
+            },
+            {
+              "name": "Promoción E Incidencia De La Ciencia Y Las Humanidades",
+              "tipo": "dg",
+              "person": "Jesús Ofelia Angúlo Guerrero",
+              "color": "#134033",
+              "children": []
+            },
+            {
+              "name": "Difusión Y Divulgación De La Ciencia Y Las Humanidades",
+              "tipo": "dir",
+              "person": "Aída Alejandra Golcman",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Promoción De Las Vocaciones Científicas Y Humanísticas",
+              "tipo": "dir",
+              "person": "Rubén Antonio Miguel",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Articulación De Centros Públicos De Investigación",
+              "tipo": "dir",
+              "person": "Pascual Ogarrio Rojas",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Análisis Estratégico",
+              "tipo": "dir",
+              "person": "Luis Enrique Rojas Ramírez",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Investigación Científica Básica Y De Frontera",
+              "tipo": "dir",
+              "person": "Carlo Andrés Altamirano Allende",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Asistencia Técnica",
+              "tipo": "dir",
+              "person": "Felicia Xasabana Barbosa Aguilar",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Gestión Administrativa De La Sub Cyh",
+              "tipo": "dir",
+              "person": "Zyanya Castro Morales",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Infraestructura Y Colaboración Científica Y Humanística",
+              "tipo": "dir",
+              "person": "Alfonso Araiza Marroquin",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Investigación Humanística",
+              "tipo": "dir",
+              "person": "Evelyn Morales Vázquez",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Apoyos Para La Consolidación De La Comunidad Científica…",
+              "tipo": "dir",
+              "person": "Carlos Roberto Martínez Tarelo",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Estrategias De Investigación Aplicada",
+              "tipo": "dir",
+              "person": "Gabriela García Acosta",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Laboratorios Nacionales",
+              "tipo": "dir",
+              "person": "Ivan Alejandro Zamora Velasco",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Coordinación Estratégica Para La Incidencia De La Cienc…",
+              "tipo": "dir",
+              "person": "Rodolfo Enrique Castellanos Valderrama",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Del Sistema Nacional De Investigadoras E Investigadores",
+              "tipo": "dir",
+              "person": "Karen Araceli Ontiveros Vázquez",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Becas Y Posgrado",
+              "tipo": "dir",
+              "person": "Edwin Ricardo Triujeque Woods",
+              "color": "#1e5b4f",
+              "children": []
+            },
+            {
+              "name": "Subdirecciones (24)",
+              "tipo": "subdir",
+              "person": "",
+              "color": "#c75b00",
+              "_group": true,
+              "children": [
+                {
+                  "name": "Análisis Estratégico Y Evaluación De La Investigación C…",
+                  "tipo": "subdir",
+                  "person": "Sandra Atenea Muzquiz Beltrán",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Del Sistema Nacional De Publicaciones Científicas Y Hum…",
+                  "tipo": "subdir",
+                  "person": "Pedro Ovando Vázquez",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Vocaciones Y Divulgación Comunitaria De La Ciencia Y La…",
+                  "tipo": "subdir",
+                  "person": "David Montoya López",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Difusión De La Ciencia Y Las Humanidades",
+                  "tipo": "subdir",
+                  "person": "Zaira Lagunas Ledesma",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Transparencia Proactiva Y Gobierno Abierto",
+                  "tipo": "subdir",
+                  "person": "Claudia Viridiana Hernández Torres",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Becas Al Extranjero",
+                  "tipo": "subdir",
+                  "person": "Christelle Lazareno Le Pavec",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Evaluación Y Seguimiento De Proyectos De Investigación …",
+                  "tipo": "subdir",
+                  "person": "Guadalupe Trejo Mendoza",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Colaboración Científica Y Humanística",
+                  "tipo": "subdir",
+                  "person": "Maria De Lourdes Gonzalez Jimenez",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Infraestructura Científica Y Humanística",
+                  "tipo": "subdir",
+                  "person": "Andrés Iglesias Thomé",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Proyectos Estratégicos De Investigación Humanística",
+                  "tipo": "subdir",
+                  "person": "Arturo Bravo Calderón",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Evaluación Y Seguimiento De Proyectos De Ciencia Básica…",
+                  "tipo": "subdir",
+                  "person": "Andrea Judith Suarez Lopez",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Investigación Científica Y Tecnológica",
+                  "tipo": "subdir",
+                  "person": "Selene Mariana Sánchez Mendoza",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Vinculación Social E Investigación Socio-Economica",
+                  "tipo": "subdir",
+                  "person": "Humberto Peraza Villarreal",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Sistemas De Información En Bioseguridad",
+                  "tipo": "subdir",
+                  "person": "Ronald Sánchez Carrillo",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Coordinación Estratégica De La Ciencia Y Las Humanidade…",
+                  "tipo": "subdir",
+                  "person": "José Salvador Jaramillo Aguilar",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Desempeño Institucional De Centros Públicos De Investig…",
+                  "tipo": "subdir",
+                  "person": "Josué González Hernández",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Becas Nacionales",
+                  "tipo": "subdir",
+                  "person": "Rosa Ivette Guzman Avila",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Gobierno Y Operación De Centros Públicos De Investigaci…",
+                  "tipo": "subdir",
+                  "person": "Maria Guadalupe Ocotitla Solis",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Fortalecimiento Del Sistema Nacional De Centros Público…",
+                  "tipo": "subdir",
+                  "person": "Eduardo De Los Santos Toledo",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Gestión Operativa",
+                  "tipo": "subdir",
+                  "person": "Víctor Miguel García Velásquez",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Análisis E Integración De Información Estratégica",
+                  "tipo": "subdir",
+                  "person": "Rosanna Cabrera Cabrera",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Posgrado",
+                  "tipo": "subdir",
+                  "person": "Aldo Benhumea Peña",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Gestión Y Administración De Pagos",
+                  "tipo": "subdir",
+                  "person": "Oscar Ibañez Malvaez",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Consolidación De La Comunidad Científica Y Humanística",
+                  "tipo": "subdir",
+                  "person": "Alma Delia Perez Villanueva",
+                  "color": "#c75b00",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Jefaturas de Departamento (30)",
+              "tipo": "depto",
+              "person": "",
+              "color": "#a57f2c",
+              "_group": true,
+              "children": [
+                {
+                  "name": "Análisis Estratégico Y Evaluación De La Investigación C…",
+                  "tipo": "depto",
+                  "person": "Karla Sofia Ramirez Barrera",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Seguimiento Administrativo De Becas Nacionales",
+                  "tipo": "depto",
+                  "person": "Fontaine Anita Rivera Muñiz",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Del Sistema Nacional De Publicaciones Científicas Y Hum…",
+                  "tipo": "depto",
+                  "person": "Araceli Flores Chavez",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Seguimiento Al Desempeño",
+                  "tipo": "depto",
+                  "person": "Guadalupe Salimar Alfaro Velasco",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Evaluación De Infraestructura Científica, Humanística Y…",
+                  "tipo": "depto",
+                  "person": "Luz Valeria Guadarrama Vilchis",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Jefe De Tecnicos",
+                  "tipo": "depto",
+                  "person": "Maria Del Rocio Rodriguez Quintana",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Seguimiento A La Transición Y Eficiencia Energética",
+                  "tipo": "depto",
+                  "person": "Alejandro Castillo Montalvo",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Formalización De Investigadoras E Investigadores Por Mé…",
+                  "tipo": "depto",
+                  "person": "Jessica Itziar Ojeda Cisneros",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Jefe De Tecnicos",
+                  "tipo": "depto",
+                  "person": "Alicia Contreras Campos",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Jefe De Tecnicos",
+                  "tipo": "depto",
+                  "person": "Ana Maria Barbosa Montero",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Jefe De Tecnicos",
+                  "tipo": "depto",
+                  "person": "Alma Delia Gonzalez Lozano",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Evaluación De Investigadoras E Investigadores Por Méxic…",
+                  "tipo": "depto",
+                  "person": "Maria Guadalupe Sarrion Ramirez",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Seguimiento Administrativo De Becas Al Extranjero",
+                  "tipo": "depto",
+                  "person": "Rocio Moreno Canales",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Colaboración Científica Y Humanística",
+                  "tipo": "depto",
+                  "person": "Juan Carlos Ceciliano Morales",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Jefe De Tecnicos",
+                  "tipo": "depto",
+                  "person": "Samuel Morales Garcia",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Jefe De Tecnicos",
+                  "tipo": "depto",
+                  "person": "Maria Teresa Anguiano Gutierrez",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Proyectos Estratégicos De Ciencia Básica Y De Frontera",
+                  "tipo": "depto",
+                  "person": "Sharon Vanessa Badillo Vazquez",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Infraestructura Científica Y Humanística",
+                  "tipo": "depto",
+                  "person": "Veronica Ivonne Barrientos Aguilar",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Seguimiento Sectorial",
+                  "tipo": "depto",
+                  "person": "Cristina Gloria Conde Flores",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Ética Y Desempeño Institucional De Centros Públicos De …",
+                  "tipo": "depto",
+                  "person": "Edgar David Ramírez De Jesús",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Jefe (A) De Tecnico (A)S",
+                  "tipo": "depto",
+                  "person": "Eldaa Flores Galicia",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Jefe (A) De Tecnico (A)S",
+                  "tipo": "depto",
+                  "person": "Ivan Ricardo Moreno Castillo",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Asignación De Becas Nacionales",
+                  "tipo": "depto",
+                  "person": "Omar Miguel Velazquez Mendoza",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Jefe (A) De Tecnico (A)S",
+                  "tipo": "depto",
+                  "person": "Andres Rivera Lozada",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Exbecarios",
+                  "tipo": "depto",
+                  "person": "Angelica Vianney Aguilar Gutierrez",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Jefe (A) De Tecnico (A)S",
+                  "tipo": "depto",
+                  "person": "Jose Francisco Miranda Juarez",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Seguimiento De Becas Para La Consolidación",
+                  "tipo": "depto",
+                  "person": "Anelen Romero Rodriguez",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Asignación A Becas Para La Consolidación",
+                  "tipo": "depto",
+                  "person": "Francisco Froylán López Vera",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Evaluación De Infraestructura Científica, Humanística Y…",
+                  "tipo": "depto",
+                  "person": "Maricarmen Tovar Sandoval",
+                  "color": "#a57f2c",
+                  "children": []
+                },
+                {
+                  "name": "Jefe (A) De Tecnico (A)S",
+                  "tipo": "depto",
+                  "person": "Silvia Vazquez Neria",
+                  "color": "#a57f2c",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "subdtvei",
+          "name": "Subsecretaría de Desarrollo\nTecnológico, Vinculación e Innovación",
+          "tipo": "tecnologia",
+          "person": "Celina Peña Guzmán",
+          "color": "#a57f2c",
+          "children": [
+            {
+              "name": "Desarrollo, Transferencia De Tecnología E Innovación",
+              "tipo": "dg",
+              "person": "Marco Antonio Moreno Ibarra",
+              "color": "#7a5c1e",
+              "children": []
+            },
+            {
+              "name": "Sistemas Nacionales De Información Científica",
+              "tipo": "dg",
+              "person": "Juan José Rivaud Gallardo",
+              "color": "#7a5c1e",
+              "children": []
+            },
+            {
+              "name": "Programas Prioritarios",
+              "tipo": "dg",
+              "person": "Juan José González Moreno",
+              "color": "#7a5c1e",
+              "children": []
+            },
+            {
+              "name": "Centros Públicos De Investigación Y Laboratorios Nacion…",
+              "tipo": "dg",
+              "person": "Feliu Davino Sagols Troncoso",
+              "color": "#7a5c1e",
+              "children": []
+            },
+            {
+              "name": "Seguridad Y Gestión Integral De Riesgos",
+              "tipo": "dir",
+              "person": "Mileiri Montserrat Montiel Bustos",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Estabilidad Operativa Y Componentes Informáticos",
+              "tipo": "dir",
+              "person": "Rafael Kory Vences Solís",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Energía, Cambio Climático Y Medio Ambiente",
+              "tipo": "dir",
+              "person": "Yolanda Cruz Venegas",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Gestión Administrativa De La Sub Dtvei",
+              "tipo": "dir",
+              "person": "Michelle Flores Luna",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Tecnologías Para La Salud",
+              "tipo": "dir",
+              "person": "Alejandro Rodríguez Torres",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Desarrollo Tecnológico",
+              "tipo": "dir",
+              "person": "Edith Calixto Pérez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Tecnologías De La Información E Inteligencia Artificial",
+              "tipo": "dir",
+              "person": "Rosario Morán Ramírez",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Modelado Y Análisis De Sistemas Nacionales De Informaci…",
+              "tipo": "dir",
+              "person": "María Del Pilar Piñones Contreras",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Diseño Y Desarrollo De Sistemas Nacionales De Informaci…",
+              "tipo": "dir",
+              "person": "Enrique Muñoz Goncen",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Transferencia De Tecnología",
+              "tipo": "dir",
+              "person": "Francisco Pérez Meza",
+              "color": "#a57f2c",
+              "children": []
+            },
+            {
+              "name": "Subdirecciones (12)",
+              "tipo": "subdir",
+              "person": "",
+              "color": "#c75b00",
+              "_group": true,
+              "children": [
+                {
+                  "name": "Análisis E Integración De Sistemas Nacionales De Inform…",
+                  "tipo": "subdir",
+                  "person": "Víctor Hugo García Jarillo",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Gestión De La Subsecretaría De Dtvei",
+                  "tipo": "subdir",
+                  "person": "Isaura Angela Pastrana Gress",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Articulación De Tecnologías Para La Salud",
+                  "tipo": "subdir",
+                  "person": "Soledad Ramos Penin",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Modelado De Procesos Y Estándares De Interoperabilidad",
+                  "tipo": "subdir",
+                  "person": "Mayra Cecilia Meléndez Inda",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Soluciones En Sistemas Nacionales De Información Cientí…",
+                  "tipo": "subdir",
+                  "person": "Juan Limón",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Sistemas Geoespaciales Nacionales",
+                  "tipo": "subdir",
+                  "person": "Leticia Montserrat Vargas Rocha",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Vinculación Tecnológica",
+                  "tipo": "subdir",
+                  "person": "Lorena Del Carmen Jiménez Orozco",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Sectorial De Innovación",
+                  "tipo": "subdir",
+                  "person": "Carlos Felipe Corona Morales",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Articulación De Tecnologías Para La Relocalización",
+                  "tipo": "subdir",
+                  "person": "Jaen Astrid Madrid Alvarado",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Desarrollo De Inteligencia Artificial",
+                  "tipo": "subdir",
+                  "person": "Elia Ivonne Noriega Rosales",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Gestión De La Propiedad Intelectual",
+                  "tipo": "subdir",
+                  "person": "María Verónica Rincón Pirela",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Estrategia Tecnológica",
+                  "tipo": "subdir",
+                  "person": "Anny Katherinne Meneses Mosquera",
+                  "color": "#c75b00",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Jefaturas de Departamento (10)",
+              "tipo": "depto",
+              "person": "",
+              "color": "#8a6a24",
+              "_group": true,
+              "children": [
+                {
+                  "name": "Seguimiento A Tecnologías Para La Salud",
+                  "tipo": "depto",
+                  "person": "Elsa Julieta Muñiz Pérez",
+                  "color": "#8a6a24",
+                  "children": []
+                },
+                {
+                  "name": "Apoyo A La Gestión De La Dgsnic",
+                  "tipo": "depto",
+                  "person": "Hiram Vallejo Cardona",
+                  "color": "#8a6a24",
+                  "children": []
+                },
+                {
+                  "name": "Vinculación Internacional",
+                  "tipo": "depto",
+                  "person": "Vanessa Altamirano Benito",
+                  "color": "#8a6a24",
+                  "children": []
+                },
+                {
+                  "name": "Vinculación Nacional",
+                  "tipo": "depto",
+                  "person": "Christopher Gómez Alvarez",
+                  "color": "#8a6a24",
+                  "children": []
+                },
+                {
+                  "name": "Operacion Sectorial",
+                  "tipo": "depto",
+                  "person": "Bernardo Angeles Antonio",
+                  "color": "#8a6a24",
+                  "children": []
+                },
+                {
+                  "name": "Proyectos Estratégicos De Centros Públicos De Investiga…",
+                  "tipo": "depto",
+                  "person": "Olivia Lisbeth Aguilar Orta",
+                  "color": "#8a6a24",
+                  "children": []
+                },
+                {
+                  "name": "Jefe (A) De Tecnico (A)S",
+                  "tipo": "depto",
+                  "person": "Paola Xilonelt Perez Ayuso",
+                  "color": "#8a6a24",
+                  "children": []
+                },
+                {
+                  "name": "Monitoreo Y Promoción Tecnológica",
+                  "tipo": "depto",
+                  "person": "Eduardo Manzo López",
+                  "color": "#8a6a24",
+                  "children": []
+                },
+                {
+                  "name": "Tecnologías Disruptivas Y Prioritarias",
+                  "tipo": "depto",
+                  "person": "Carlos Alejandro Cantú Ruíz",
+                  "color": "#8a6a24",
+                  "children": []
+                },
+                {
+                  "name": "Gestión Tecnológica",
+                  "tipo": "depto",
+                  "person": "Itzel Alejandra López Heredia",
+                  "color": "#8a6a24",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "politicas",
+          "name": "Unidad de Políticas\nTransversales",
+          "tipo": "politicas",
+          "person": "Mathieu Hautefeuille",
+          "color": "#2a5c8a",
+          "children": [
+            {
+              "name": "Asuntos Internacionales",
+              "tipo": "dir",
+              "person": "Andrea Campos Bedolla",
+              "color": "#2a5c8a",
+              "children": []
+            },
+            {
+              "name": "Enlace Con Dependencias Federales Y Entidades Federativ…",
+              "tipo": "dir",
+              "person": "Paulo César Martínez López",
+              "color": "#2a5c8a",
+              "children": []
+            },
+            {
+              "name": "Cooperación Institucional Y Sectorial",
+              "tipo": "dg",
+              "person": "Gerardo Tamayo Castroparedes",
+              "color": "#1e4466",
+              "children": []
+            },
+            {
+              "name": "Subdirecciones (4)",
+              "tipo": "subdir",
+              "person": "",
+              "color": "#c75b00",
+              "_group": true,
+              "children": [
+                {
+                  "name": "Evaluación",
+                  "tipo": "subdir",
+                  "person": "Gabriela Perez Alvarez",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Información Sectorial De Ciencia Y Tecnológia",
+                  "tipo": "subdir",
+                  "person": "Marco Antonio Franco Perez",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Estadística Institucional",
+                  "tipo": "subdir",
+                  "person": "Cristina Hernandez Ramirez",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Análisis Y Aprovechamiento De La Información",
+                  "tipo": "subdir",
+                  "person": "Brenda Susana Figueroa Ramirez",
+                  "color": "#c75b00",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Jefaturas de Departamento (5)",
+              "tipo": "depto",
+              "person": "",
+              "color": "#3a7ab5",
+              "_group": true,
+              "children": [
+                {
+                  "name": "Apoyo Administrativo",
+                  "tipo": "depto",
+                  "person": "Juan Adrián Cerón Pérez Negrón",
+                  "color": "#3a7ab5",
+                  "children": []
+                },
+                {
+                  "name": "Vinculación",
+                  "tipo": "depto",
+                  "person": "Maria Teresa Medina Suarez",
+                  "color": "#3a7ab5",
+                  "children": []
+                },
+                {
+                  "name": "Enlace Jurídico En Bioseguridad",
+                  "tipo": "depto",
+                  "person": "Moises Federico Lopez Cordero",
+                  "color": "#3a7ab5",
+                  "children": []
+                },
+                {
+                  "name": "Logística Y Apoyo A La Evaluación",
+                  "tipo": "depto",
+                  "person": "Damián Canales Sánchez",
+                  "color": "#3a7ab5",
+                  "children": []
+                },
+                {
+                  "name": "Jefe (A) De Tecnico (A)S",
+                  "tipo": "depto",
+                  "person": "Elizabeth Garcia Chavero",
+                  "color": "#3a7ab5",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uaf",
+          "name": "Unidad de Administración\ny Finanzas (UAF)",
+          "tipo": "uaf",
+          "person": "Juan Manuel López Ramírez",
+          "color": "#6b3a72",
+          "children": [
+            {
+              "name": "Recursos Materiales Y Servicios Generales",
+              "tipo": "dg",
+              "person": "Jessica Román Carballo",
+              "color": "#4e2a54",
+              "children": []
+            },
+            {
+              "name": "Presupuesto Y Recursos Financieros",
+              "tipo": "dg",
+              "person": "Joaquín Alvarado Ángeles",
+              "color": "#4e2a54",
+              "children": []
+            },
+            {
+              "name": "Recursos Humanos Y Organización",
+              "tipo": "dg",
+              "person": "Eduardo Enrique Castillo Arroyo",
+              "color": "#4e2a54",
+              "children": []
+            },
+            {
+              "name": "Seguimiento Financiero Y Presupuestal De Proyectos",
+              "tipo": "dir",
+              "person": "Yoselinn Esther Galván Martínez",
+              "color": "#6b3a72",
+              "children": []
+            },
+            {
+              "name": "Relaciones Laborales Y Remuneraciones",
+              "tipo": "dir",
+              "person": "Mary Carmen Vigil Díaz",
+              "color": "#6b3a72",
+              "children": []
+            },
+            {
+              "name": "Adquisiciones Y Contrataciones",
+              "tipo": "dir",
+              "person": "Lucia Marcela Oliver Razo",
+              "color": "#6b3a72",
+              "children": []
+            },
+            {
+              "name": "Contabilidad Y Recursos Financieros",
+              "tipo": "dir",
+              "person": "Maricarmen Torres Cruz",
+              "color": "#6b3a72",
+              "children": []
+            },
+            {
+              "name": "Presupuesto",
+              "tipo": "dir",
+              "person": "Leticia Alemán Rosas",
+              "color": "#6b3a72",
+              "children": []
+            },
+            {
+              "name": "Desarrollo Organizacional Y Servicio Profesional De Car…",
+              "tipo": "dir",
+              "person": "Liliana Flores Hernández",
+              "color": "#6b3a72",
+              "children": []
+            },
+            {
+              "name": "Subdirecciones (7)",
+              "tipo": "subdir",
+              "person": "",
+              "color": "#c75b00",
+              "_group": true,
+              "children": [
+                {
+                  "name": "Presupuesto",
+                  "tipo": "subdir",
+                  "person": "Lucia Gabriela Moreno Camacho",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Vinculación Y Seguimiento",
+                  "tipo": "subdir",
+                  "person": "Esmeralda César Moreno",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Contabilidad",
+                  "tipo": "subdir",
+                  "person": "Silvia Esperanza Ricardez",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Seguimiento Y Control Presupuestal De Las Entidades Coo…",
+                  "tipo": "subdir",
+                  "person": "Ana Haydee Ramirez Cabello",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Recursos Financieros",
+                  "tipo": "subdir",
+                  "person": "Gisela Juana Gomez Larios",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Seguimiento De Auditorías",
+                  "tipo": "subdir",
+                  "person": "Esteban Adrián González Herrera",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Tics",
+                  "tipo": "subdir",
+                  "person": "Edgar Santos Castillejos",
+                  "color": "#c75b00",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Jefaturas de Departamento (9)",
+              "tipo": "depto",
+              "person": "",
+              "color": "#8b5494",
+              "_group": true,
+              "children": [
+                {
+                  "name": "Presupuesto",
+                  "tipo": "depto",
+                  "person": "Lino Aguilar Briseño",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Seguimiento Programático Presupuestal",
+                  "tipo": "depto",
+                  "person": "Javier Garcia Rosas",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Jefe De Tecnicos",
+                  "tipo": "depto",
+                  "person": "Ariel Aranda Sanchez",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Jefe (A) De Tecnico (A)S",
+                  "tipo": "depto",
+                  "person": "Jacqueline Arenas Valencia",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Análisis Presupuestal",
+                  "tipo": "depto",
+                  "person": "Héctor Lara Garrido",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Egresos",
+                  "tipo": "depto",
+                  "person": "Eva Gabriela Ballesteros Marquez",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Gestión Administrativa",
+                  "tipo": "depto",
+                  "person": "Ana Flora Herrera Ayala",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Gestión",
+                  "tipo": "depto",
+                  "person": "Naomi Irazu Delgado Celaya",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Seguimiento A Requerimientos De Información",
+                  "tipo": "depto",
+                  "person": "Marco Antonio Ordaz Martinez",
+                  "color": "#8b5494",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uaj",
+          "name": "Unidad de Asuntos\nJurídicos (UAJ)",
+          "tipo": "uaj",
+          "person": "Eduardo Guerrero Villegas",
+          "color": "#6b3a72",
+          "children": [
+            {
+              "name": "Estrategias Y Procedimientos Judiciales",
+              "tipo": "dg",
+              "person": "Juan Barrera Almaraz",
+              "color": "#4e2a54",
+              "children": []
+            },
+            {
+              "name": "Consulta Y Estudios Normativos",
+              "tipo": "dg",
+              "person": "María Elena Antuna González",
+              "color": "#4e2a54",
+              "children": []
+            },
+            {
+              "name": "Proyección De Normas Y Seguimiento Legislativo",
+              "tipo": "dir",
+              "person": "Pablo Alberto Arrocena Salgado",
+              "color": "#6b3a72",
+              "children": []
+            },
+            {
+              "name": "Procesos Contenciosos Y Laborales",
+              "tipo": "dir",
+              "person": "Jonathan Ernesto Victoria Castillo",
+              "color": "#6b3a72",
+              "children": []
+            },
+            {
+              "name": "Procesos No Contenciosos",
+              "tipo": "dir",
+              "person": "Juan De Abraham González Salas",
+              "color": "#6b3a72",
+              "children": []
+            },
+            {
+              "name": "Director (A) De Análisis Del Derecho A La Ciencia Y Tra…",
+              "tipo": "dir",
+              "person": "Juan Carlos Chávez Gómez",
+              "color": "#6b3a72",
+              "children": []
+            },
+            {
+              "name": "Análisis Normativo Y Consulta Sectorial",
+              "tipo": "dir",
+              "person": "José Guadalupe Hernández Martínez",
+              "color": "#6b3a72",
+              "children": []
+            },
+            {
+              "name": "Subdirecciones (2)",
+              "tipo": "subdir",
+              "person": "",
+              "color": "#c75b00",
+              "_group": true,
+              "children": [
+                {
+                  "name": "Análisis Normativo Y Consulta Sectorial",
+                  "tipo": "subdir",
+                  "person": "Jaime Cárdenas Anaya",
+                  "color": "#c75b00",
+                  "children": []
+                },
+                {
+                  "name": "Convenios Y Asesoría Institucional",
+                  "tipo": "subdir",
+                  "person": "Iván Jiménez Adorno",
+                  "color": "#c75b00",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Jefaturas de Departamento (7)",
+              "tipo": "depto",
+              "person": "",
+              "color": "#8b5494",
+              "_group": true,
+              "children": [
+                {
+                  "name": "Seguimiento Normativo Sectorial",
+                  "tipo": "depto",
+                  "person": "Lilia Beatriz Moreno Aguilar",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Jefe De Tecnicos",
+                  "tipo": "depto",
+                  "person": "Juan Carlos Gonzalez Martinez",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Litigios Administrativos",
+                  "tipo": "depto",
+                  "person": "Erick Crystell Godínez Flores",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Jefe (A) De Tecnico (A)S",
+                  "tipo": "depto",
+                  "person": "Ana Elena Cueto Ramirez",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Gestión Institucional",
+                  "tipo": "depto",
+                  "person": "Marisol Cecilia Danel Navarrete",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Atención A Conflictos Laborales",
+                  "tipo": "depto",
+                  "person": "Luis Alejandro Velasco García",
+                  "color": "#8b5494",
+                  "children": []
+                },
+                {
+                  "name": "Jefe (A) De Tecnico (A)S",
+                  "tipo": "depto",
+                  "person": "Amelia Ortiz Muñiz",
+                  "color": "#8b5494",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "cibiogem",
-      "name": "Secretaría Ejecutiva CIBIOGEM",
-      "color": "#c75b00",
+      "name": "Secretaría Ejecutiva\nCIBIOGEM",
       "tipo": "cibiogem",
-      "children": [],
-      "person": "Titular Pendiente"
+      "person": "Titular Pendiente",
+      "color": "#c75b00",
+      "children": [
+        {
+          "name": "Información Y Fomento A La Investigación",
+          "tipo": "dir",
+          "person": "Consuelo López López",
+          "color": "#c75b00",
+          "children": []
+        },
+        {
+          "name": "Políticas Y Normativa",
+          "tipo": "dir",
+          "person": "Raquel Rodríguez Guadarrama",
+          "color": "#c75b00",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Investigadoras e Investigadores\npor México (IxM)",
+      "tipo": "ixm",
+      "person": "1123 personas adscritas",
+      "color": "#2a7a8a",
+      "children": []
     }
   ]
 };
-
-
 const W = window.innerWidth;
 const H = window.innerHeight - 96;
 const margin = {top: 40, right: 20, bottom: 20, left: 40};
@@ -274,17 +2086,45 @@ function render() {
 
 function nodeRadius(d) {
   const t = d.data.tipo;
-  if(t==='secretaria' || t==='dg') return 9;
-  if(t==='cibiogem' || t==='uaf'||t==='politicas' || t==='cienciahum'||t==='tecnologia') return 8;
-  if(t==='dir') return 7;
-  if(t==='subdir') return 6;
-  return 5;
+  // Raíz
+  if(t==='secretaria') return 11;
+  // Nodo agrupador de subsecretarías y titulares
+  if(t==='subgrupo') return 10;
+  // Subsecretarías y Titulares de Unidad
+  if(t==='cienciahum' || t==='tecnologia' || t==='politicas' ||
+     t==='uaf' || t==='uaj' || t==='cibiogem') return 9;
+  // IxM — nodo especial
+  if(t==='ixm') return 9;
+  // Direcciones Generales
+  if(t==='dg') return 8;
+  // Direcciones de Área
+  if(t==='dir') return 6;
+  // Subdirecciones
+  if(t==='subdir') return 5;
+  // Jefaturas y grupos
+  return 4;
 }
 
+const TIPO_LABELS = {
+  secretaria: 'Secretaría de Estado',
+  subgrupo:   'Subsecretarías y Titulares de Unidad',
+  cienciahum: 'Subsecretaría de Ciencia y Humanidades',
+  tecnologia: 'Subsecretaría de Desarrollo Tecnológico',
+  politicas:  'Titular — Unidad de Políticas Transversales',
+  uaf:        'Titular — Unidad de Administración y Finanzas',
+  uaj:        'Titular — Unidad de Asuntos Jurídicos',
+  cibiogem:   'Secretaría Ejecutiva CIBIOGEM',
+  ixm:        'Investigadoras e Investigadores por México',
+  dg:         'Dirección General',
+  dir:        'Dirección de Área',
+  subdir:     'Subdirección',
+  depto:      'Jefatura de Departamento',
+};
 const tip = document.getElementById('tooltip');
 function showTooltip(e, d) {
   const nd = d.data || d;
-  tip.innerHTML = `<span class="t-tipo" style="background:${nd.color||c(nd.tipo)||c('dir')};color:#fff">${nd.tipo||'dir'}</span><h4>${nd.name.replace(/\\n/g,' ')}</h4>${nd.person ? `<div class="t-person">👤 ${nd.person}</div>` : ''}${(nd.children||nd._children) ? `<div class="t-cargo" style="margin-top:.3rem">Clic para ${nd.children?'colapsar':'expandir'}</div>` : ''}`;
+  const label = TIPO_LABELS[nd.tipo] || nd.tipo || '—';
+  tip.innerHTML = `<span class="t-tipo" style="background:${nd.color||c(nd.tipo)||c('dir')};color:#fff">${label}</span><h4>${nd.name.replace(/\\n/g,' ')}</h4>${nd.person ? `<div class="t-person">👤 ${nd.person}</div>` : ''}${(nd.children||nd._children) ? `<div class="t-cargo" style="margin-top:.3rem">Clic para ${nd.children?'colapsar':'expandir'}</div>` : ''}`;
   tip.style.display = 'block';
   moveTooltip(e);
 }
