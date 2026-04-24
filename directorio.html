@@ -420,11 +420,31 @@
       flex-wrap: wrap;
       align-items: center;
     }
-
     .filter-chips {
       display: flex;
       flex-direction: column;
       gap: 8px;
+    }
+
+    .btn-inicio {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .25);
+      color: #fff;
+      border-radius: 8px;
+      padding: .35rem .85rem;
+      font-size: .8rem;
+      font-weight: 600;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      transition: background .2s;
+      white-space: nowrap;
+    }
+
+    .btn-inicio:hover {
+      background: rgba(255, 255, 255, .22);
     }
   </style>
 </head>
@@ -438,6 +458,7 @@
         <p>Fuente: Plataforma Nacional de Transparencia (SIPOT) · Art. 70 LGTAIP · Período Oct–Dic 2025</p>
       </div>
       <div class="header-badges">
+        <a href="index.html" class="btn-inicio">&#8592; Inicio</a>
         <span class="badge badge-green">229 servidoras/es públicos</span>
         <span class="badge badge-gold">Actualizado Abril 2026</span>
       </div>
